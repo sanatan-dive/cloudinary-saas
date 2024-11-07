@@ -5,6 +5,8 @@ const prismaClientSiglton = ()=>{
     return new PrismaClient()
 }
 
+type prismaClientSiglton = ReturnType<typeof prismaClientSiglton>
+
 const globalForPrisma = globalThis as unknown as {prisma: PrismaClient|undefined}
 
  const prisma = globalForPrisma.prisma ?? prismaClientSiglton()
